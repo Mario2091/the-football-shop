@@ -1,66 +1,482 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html>
-  <head>
-    <base target="_top">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <style>
-      body {
-        margin: 0;
-        font-family: 'Roboto', sans-serif;
-        background: linear-gradient(to bottom, #000000, #8B0000);
-        color: white;
-      }
-      header {
-        background: #111;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      nav a {
-        color: white;
-        margin-left: 20px;
-        text-decoration: none;
-        font-weight: bold;
-      }
-      .hero {
-        text-align: center;
-        padding: 80px 20px;
-      }
-      .hero h1 {
-        font-size: 3rem;
-      }
-      footer {
-        background: #222;
-        padding: 20px;
-        text-align: center;
-        font-size: 0.9rem;
-        color: #ccc;
-        margin-top: 50px;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="logo"><strong>Football Gear Shop</strong></div>
-      <nav>
-        <a href="?page=footballs">Footballs</a>
-        <a href="?page=shirts">Shirts</a>
-        <a href="?page=cleats">Cleats</a>
-        <a href="?page=cart">Cart</a>
-      </nav>
-    </header>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ultra Football</title>
+<style>
+/* Reset and base styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
 
-    <div class="hero">
-      <h1>Welcome to Your Ultimate Football Store</h1>
-      <p>Explore cleats, balls, and shirts handpicked for players of all levels.</p>
-    </div>
+/* Header styles */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #222;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    <footer>
-      Contact: ameerfootballbiz@gmail.com | 0455 123 456<br>
-      Open: Monday – Saturday<br>
-      Website by Ameer Shaya
-    </footer>
-  </body>
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.store-name {
+  color: #fff;
+  font-size: 24px;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background-color: #ff0000; /* Neon red hover */
+  color: #fff;
+}
+
+/* Main styles */
+main {
+  padding: 20px;
+  text-align: center;
+}
+
+.home-welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background: linear-gradient(135deg, #fff, #f0f0f0);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-welcome h2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.home-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.home-images img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.home-images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+/* Footer styles */
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+/* Product list styles */
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  width: 220px;
+  padding: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Text styles */
+.product-title {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.price {
+  color: #e91e63; /* Pinkish for prices */
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* Buttons */
+button {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #ff0000;
+}
+
+/* Cart styles */
+#cart-items {
+  margin-top: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Checkout form styles */
+#checkout-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#checkoutForm input {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+#checkoutForm button {
+  background-color: #222;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#checkoutForm button:hover {
+  background-color: #ff0000;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo-container">
+    <!-- Replace with your logo image URL or remove if not available -->
+    <img src="https://via.placeholder.com/50?text=Logo" alt="Soccer Logo" class="logo"/>
+    <h1 class="store-name">Ultra Football</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#home" onclick="navigate('home')">Home</a></li>
+      <li><a href="#shop" onclick="navigate('shop')">Shop</a></li>
+      <li><a href="#contact" onclick="navigate('contact')">Contact</a></li>
+      <li><a href="#cart" onclick="navigate('cart')">Cart (<span id="cart-count">0</span>)</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Sections for different pages -->
+<section id="home" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:80vh;">
+<h2 style="font-size:48px;">Welcome</h2>
+<div class="home-images">
+  <!-- Add soccer boots images here -->
+  <img src="https://via.placeholder.com/150?text=Boot+1" alt="Boot 1"/>
+  <img src="https://via.placeholder.com/150?text=Boot+2" alt="Boot 2"/>
+  <img src="https://via.placeholder.com/150?text=Boot+3" alt="Boot 3"/>
+  <!-- More images can be added -->
+</div>
+</section>
+
+<section id="shop" style="display:none;">
+<h2 style="margin-top:20px;">Shop Our Products</h2>
+<div style="margin:10px;">
+  <button onclick="showCategory('boots')">Football Boots</button>
+  <button onclick="showCategory('shirts')">Jerseys</button>
+  <button onclick="showCategory('balls')">Football Balls</button>
+</div>
+<div id="product-list"></div>
+</section>
+
+<section id="cart" style="display:none;">
+<h2 style="margin-top:20px;">Your Cart</h2>
+<div id="cart-items"></div>
+<button onclick="showCheckout()">Checkout</button>
+<div id="checkout" style="display:none; margin-top:20px;">
+<h3>Enter Your Details</h3>
+<form id="checkoutForm">
+<input type="text" placeholder="Full Name" required />
+<input type="email" placeholder="Email" required />
+<input type="tel" placeholder="Phone" required />
+<button type="submit">Pay & Complete Purchase</button>
+</form>
+</div>
+</section>
+
+<section id="contact" style="display:none;">
+<h2 style="margin-top:20px;">Contact Us</h2>
+<p>Full Name: Your Full Name</p>
+<p>Email: 83137hsh2@gmail.com</p>
+<p>Phone: +73 372 434 483</p>
+</section>
+
+<!-- Footer with contact info -->
+<footer>
+<div class="contact-info">
+  <p>Phone: +73 372 434 483</p>
+  <p>Email: 83137hsh2@gmail.com</p>
+  <p>Operating Days: Monday - Saturday</p>
+</div>
+</footer>
+
+<script>
+// Data for products
+const products = {
+  boots: [
+    {
+      id: 'boot1',
+      name: 'Nike Phantom GX 2 Elite',
+      price: 250,
+      image: 'https://via.placeholder.com/150?text=Boot+1',
+      link: 'https://www.rebelsport.com.au/p/nike-phantom-gx-2-elite-football-boots-M69207101.html'
+    },
+    {
+      id: 'boot2',
+      name: 'Nike Phantom GX Club',
+      price: 200,
+      image: 'https://via.placeholder.com/150?text=Boot+2',
+      link: 'https://www.rebelsport.com.au/p/nike-phantom-gx-club-football-boots-M66426901.html'
+    },
+    {
+      id: 'boot3',
+      name: 'Puma Ultra Match',
+      price: 180,
+      image: 'https://via.placeholder.com/150?text=Boot+3',
+      link: 'https://www.rebelsport.com.au/p/puma-ultra-match-football-boots-M65558801.html'
+    },
+  ],
+  shirts: [
+    {
+      id: 'jersey1',
+      name: 'Liverpool Home Jersey',
+      price: 120,
+      image: 'https://via.placeholder.com/150?text=Jersey+1',
+      link: 'https://www.joyfball.cc/products/2025-2026-player-version-liverpool-home-football-shirt-1-1-thai-quality-o060'
+    },
+    {
+      id: 'jersey2',
+      name: 'Manchester United Away Jersey',
+      price: 100,
+      image: 'https://via.placeholder.com/150?text=Jersey+2',
+      link: 'https://www.joyfball.cc/products/2025-2026-manchester-united-away-football-shirt-1-1-thai-quality'
+    },
+    { id: 'jersey3', name: 'AC Milan Home Jersey', price: 110, image:'https://via.placeholder.com/150?text=Jersey+3', link:'' },
+    { id: 'jersey4', name: 'Barcelona Home Jersey', price: 120, image:'https://via.placeholder.com/150?text=Jersey+4', link:'' },
+    { id: 'jersey5', name: 'Psg Jersey', price: 115, image:'https://via.placeholder.com/150?text=Jersey+5', link:'' },
+    { id: 'jersey6', name: 'Real Madrid Jersey', price: 125, image:'https://via.placeholder.com/150?text=Jersey+6', link:'' },
+  ],
+  balls: [
+    {
+      id: 'ball1',
+      name: 'Academy Team Ball',
+      price: 30,
+      image: 'https://via.placeholder.com/150?text=Ball+1',
+      link: 'https://www.ultrafootball.com/products/academy-team-ball-fz2966-105'
+    },
+    {
+      id: 'ball2',
+      name: 'UCL Club Ball',
+      price: 50,
+      image: 'https://via.placeholder.com/150?text=Ball+2',
+      link: 'https://www.ultrafootball.com/products/ucl-club-25-26-league-stage-ball-jp1535'
+    },
+    {
+      id: 'ball3',
+      name: 'Mini Ball',
+      price: 20,
+      image: 'https://via.placeholder.com/150?text=Ball+3',
+      link: 'https://www.ultrafootball.com/products/ucl-25-26-league-stage-mini-ball-jp1544'
+    },
+    {
+      id: 'ball4',
+      name: 'Adidas Tiro Ball',
+      price: 25,
+      image: 'https://via.placeholder.com/150?text=Ball+4',
+      link: 'https://www.ultrafootball.com/products/adidas-tiro-club-football-ball-ht2430'
+    },
+  ],
+};
+
+// Cart array
+let cart = [];
+let currentCategory = 'boots';
+
+const cartCountSpan = document.getElementById('cart-count');
+
+function navigate(sectionId) {
+  // hide all sections
+  document.querySelectorAll('section').forEach(sec => sec.style.display='none');
+  // show selected
+  document.getElementById(sectionId).style.display='flex';
+  // if shop, show default category
+  if(sectionId==='shop') {
+    showCategory(currentCategory);
+  }
+  // if cart, show cart
+  if(sectionId==='cart') {
+    displayCart();
+  }
+}
+
+// Show category products
+function showCategory(category) {
+  currentCategory=category;
+  const listDiv = document.getElementById('product-list');
+  listDiv.innerHTML = '';
+  if(products[category]){
+    products[category].forEach(p => {
+      const card = document.createElement('div');
+      card.className='product-card';
+      card.innerHTML=`
+        <img src="${p.image}" alt="${p.name}">
+        <div class="product-title">${p.name}</div>
+        <div class="price">$${p.price}</div>
+        <button onclick="addToCart('${p.id}', '${category}')">Add to Cart</button>
+      `;
+      listDiv.appendChild(card);
+    });
+  }
+}
+
+// Add to cart
+function addToCart(id, category) {
+  const item = products[category].find(p=>p.id===id);
+  if(item){
+    cart.push({...item, quantity:1});
+    updateCartCount();
+    if(navigateTo==='cart') displayCart();
+    alert(`${item.name} added to cart!`);
+  }
+}
+
+// Update cart count
+function updateCartCount() {
+  document.getElementById('cart-count').innerText=cart.length;
+}
+
+// Display cart items
+function displayCart() {
+  const container = document.getElementById('cart-items');
+  container.innerHTML='';
+  if(cart.length===0){
+    container.innerHTML='<p>Your cart is empty.</p>';
+    return;
+  }
+  cart.forEach((item, index)=>{
+    const div=document.createElement('div');
+    div.className='cart-item';
+    div.innerHTML=`
+      <div>${item.name} ($${item.price})</div>
+      <button onclick="removeFromCart(${index})">Remove</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+// Remove item
+function removeFromCart(index){
+  cart.splice(index,1);
+  updateCartCount();
+  displayCart();
+}
+
+// Show checkout
+function showCheckout() {
+  document.getElementById('checkout').style.display='block';
+}
+
+// Handle checkout form
+document.getElementById('checkoutForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  alert('Thank you for your purchase!');
+  cart=[];
+  updateCartCount();
+  displayCart();
+  document.getElementById('checkout').style.display='none';
+});
+
+// Initialize
+// Load cart from local storage if wanted (optional)
+// Show home on load
+navigate('home');
+</script>
+</body>
 </html>
